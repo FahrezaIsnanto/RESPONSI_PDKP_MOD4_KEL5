@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+     <!-- font kelompok 5 -->
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
     <title>Enkripsi dan Deskripsi kata</title>
     <style>
         *{
@@ -14,35 +20,43 @@
             width : 600px;
             border : 5px solid salmon;
             margin : 10px auto;
-            padding :10px;
+            padding :20px;
             text-align:center;
+        }
+
+        span{
+            color:red;
+        }
+
+        .judul{
+            font-family: 'Viga', sans-serif;
         }
 
     </style>
 </head>
 <body>
     <div class="container">
-    <h1>Aplikasi Enkripsi dan Deskripsi</h1>
-    <br>
-    <h3>Kelompok 5 Praktikum DKP</h3>
-    <br>
-            <form method="POST">
-                <label for="kata">Masukkan Kata</label>
-                <input type="text" name="kata" style="text-transform:lowercase">
-                <input type="submit" value="enkripsi" name="enkripsi">
-                <input type="submit" value="dekripsi" name="decrypt">
-            </form>
+    <h1 class="judul">Aplikasi Enkripsi dan Deskripsi</h1>
+    <br><br>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="kata" class="form-label">Masukkan Kata</label>
+            <input type="text" class="form-control" id="kata" name="kata">
+        </div>
+        <button type="submit" class="btn btn-primary" name="enkripsi">Enkripsi</button>
+        <button type="submit" class="btn btn-danger" name="decrypt">Dekripsi</button>
+    </form>
 <?php
 
 if(isset($_POST['kata'],$_POST['enkripsi'])){
     $kata = $_POST['kata'];
-    echo "<br> <h2>Hasil Enkripsi : ".encrypt($kata)."</h2>";
+    echo "<br> <h3>Hasil Enkripsi : "."<span>".encrypt($kata)."</span>"."</h3>";
 }
 
 if(isset($_POST['kata'],$_POST['decrypt'])){
     $kata = $_POST['kata'];
     $ubah = new Ubah($kata);
-    echo "<br> <h2>Hasil Dekripsi : ".$ubah->decrypt($kata)."</h2>";
+    echo "<br> <h3>Hasil Dekripsi : "."<span>".$ubah->decrypt($kata)."</span>"."</h3>";
 }
 
 function encrypt($kata){
@@ -96,6 +110,6 @@ class Ubah{
 }
 ?>
  </div>
-    
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>  
 </body>
 </html>
